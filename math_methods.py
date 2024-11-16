@@ -70,8 +70,9 @@ def mode(data_set):
         return solution_list
     
 
-# returns a dictionary containing the 1st quartile ('q1'), 3rd quartile ('q3'),
-# and the interquartile range ('iqr') of a given data set
+# returns a dictionary containing the minimum value ('q0/min'),
+# 1st quartile ('q1'), 2nd quartile/median ('q2'), 3rd quartile ('q3'),
+# and the maximum value ('q4/max') of a given data set
 def five_num_summary_dict(data_set):
     """
     :type data_set: list of ints or floats
@@ -81,7 +82,7 @@ def five_num_summary_dict(data_set):
 
     # for n = odd, find median index, then find
     # median of left half (q1) & right half (q3),
-    # then return q3 - q1
+    # then return five number summary dictionary
     if len(data_set) % 2 != 0:
         median_idx = len(data_set) // 2
         left_half = data_set[0 : median_idx]
@@ -93,7 +94,7 @@ def five_num_summary_dict(data_set):
     
     # for n = even, split set into left_half & right_half
     # using len(data_set) // 2 index, then find median of
-    # each half [q1(left) & q3(right)] and return q3 - q1
+    # each half [q1(left) & q3(right)] and return 5 num sum dict
     else:
         left_half = data_set[:(len(data_set) // 2)]
         right_half = data_set[(len(data_set) // 2):]
