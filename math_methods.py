@@ -34,8 +34,6 @@ def median(data_set):
     :type data_set: list of ints or floats
     :rtype: float
     """
-    data_set.sort()
-
     if len(data_set) % 2 != 0:
         return data_set[len(data_set) // 2]
     else:
@@ -60,7 +58,6 @@ def mode(data_set):
             highest_frequency = count_current_idx
             multiples_tracker[i] = count_current_idx
 
-    print('highest_frequency =', highest_frequency)
     if highest_frequency == 1:
         return None
     else:
@@ -70,15 +67,14 @@ def mode(data_set):
         return solution_list
     
 
-# returns a dictionary containing the minimum value ('q0/min'),
-# 1st quartile ('q1'), 2nd quartile/median ('q2'), 3rd quartile ('q3'),
-# and the maximum value ('q4/max') of a given data set
+# returns a dictionary containing the minimum value ('min'),
+# 1st quartile ('q1'), 2nd quartile/median ('median'), 3rd quartile ('q3'),
+# and the maximum value ('max') of a given data set
 def five_num_summary_dict(data_set):
     """
     :type data_set: list of ints or floats
     :rtype: dictionary of ints or floats
     """
-    data_set.sort()
 
     # for n = odd, find median index, then find
     # median of left half (q1) & right half (q3),
@@ -89,7 +85,7 @@ def five_num_summary_dict(data_set):
         right_half = data_set[(median_idx + 1):]
         q1 = median(left_half)
         q3 = median(right_half)
-        five_num_summary_dict = {'q0/min': data_set[0], 'q1': q1, 'q2': median(data_set), 'q3': q3, 'q4/max': data_set[-1]}
+        five_num_summary_dict = {'min': data_set[0], 'q1': q1, 'median': median(data_set), 'q3': q3, 'max': data_set[-1]}
         return five_num_summary_dict
     
     # for n = even, split set into left_half & right_half
@@ -100,7 +96,7 @@ def five_num_summary_dict(data_set):
         right_half = data_set[(len(data_set) // 2):]
         q1 = median(left_half)
         q3 = median(right_half)
-        five_num_summary_dict = {'q0/min': data_set[0], 'q1': q1, 'q2': median(data_set), 'q3': q3, 'q4/max': data_set[-1]}
+        five_num_summary_dict = {'min': data_set[0], 'q1': q1, 'median': median(data_set), 'q3': q3, 'max': data_set[-1]}
         return five_num_summary_dict
 
 # returns outliers (if any) in the data set; outliers
@@ -110,7 +106,6 @@ def outliers(data_set):
     :type data_set: list of ints or floats
     :rtype: list of ints or floats or None
     """
-    data_set.sort()
     q1 = five_num_summary_dict(data_set)['q1']
     q3 = five_num_summary_dict(data_set)['q3']
     iqr = q3 - q1
@@ -125,7 +120,7 @@ def outliers(data_set):
         outliers.append(None)
     return outliers
 
-
+'''
 # test_set = [5, 7, 10, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25]
 test_set = [25.5, 25.5, 26.5, 28.5, 29, 30.5, 31.5, 31.5, 32, 32.5]
 # test_set = [1, 2, 3, 4, 5, 6]
@@ -135,3 +130,4 @@ print('median =', median(test_set))
 print('mode =', mode(test_set))
 print('five number summary =', five_num_summary_dict(test_set))
 print('outliers =', outliers(test_set))
+'''
