@@ -1,21 +1,13 @@
-# sholuld I make this all a class? Do some research.
-# also, when creating the basic API with the one
-# super-route that calls all methods and returns a
-# dict of them, consider sorting up front before
-# median and iqr method calls, or just up front in general
+# the below methods are designed to be used
+# to calculate classic statistical measures
+# for a given data set
 
-# returns the range of a given data set:
-# named set_range because of built-in range function;
-# alternatively, if input data_set is already sorted,
-# min == data_set[0] & max == data_set[-1]
-def set_range(data_set):
-    """
-    :type data_set: list of ints or floats
-    :rtype: float
-    """
-    min_value = min(data_set)
-    max_value = max(data_set)
-    return float((max_value - min_value))
+# TODO: how to validate a given input data set;
+# also, how will values be separated, by a space,
+# with a comma, or both/either?
+
+# TODO: figure out how to take as input large
+# data sets from a file
 
 # returns the mean of a given data set
 def mean(data_set):
