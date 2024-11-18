@@ -1,9 +1,8 @@
-from typing import Union, List
+from typing import List
 from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 import math_methods
-import json
 
 # Define the data model for the request
 # body in the POST method
