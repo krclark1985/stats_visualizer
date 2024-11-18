@@ -4,13 +4,13 @@ from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 import math_methods
 
-# define the data model for the 
+# defines the data model for the 
 # request body in the POST method
 class DataSet(BaseModel):
     data_input: List[float]
 
 
-# initialize FastAPI app
+# initializes FastAPI app
 app = FastAPI()
 
 # takes data set as input (as a list of float values),
