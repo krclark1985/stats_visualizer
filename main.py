@@ -4,16 +4,16 @@ from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 import math_methods
 
-# Define the data model for the request
-# body in the POST method
+# define the data model for the 
+# request body in the POST method
 class DataSet(BaseModel):
     data_input: List[float]
 
 
-# Initialize FastAPI app
+# initialize FastAPI app
 app = FastAPI()
 
-# Takes data set as input (as a list of float values),
+# takes data set as input (as a list of float values),
 # calls math methods sequentially to calculate various
 # statistical measures, and builds a dictionary of them
 # step by step; returns dictionary of calculated measures
@@ -30,7 +30,7 @@ def calculate_stats(data_set: DataSet):
                       'mode': [],
                       'outliers': []}
     
-    # Encodes DataSet object data_set into JSON encodable object,
+    # encodes DataSet object data_set into JSON encodable object,
     # then extracts data set input list from new_data_set; then
     # sorts new_data_set for use in subsequent math_methods
     new_data_set = jsonable_encoder(data_set)
