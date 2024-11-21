@@ -33,6 +33,7 @@ def calculate_stats(data_set: DataSet):
     # encodes DataSet object data_set into JSON encodable object,
     # then extracts data set input list from new_data_set; then
     # sorts new_data_set for use in subsequent math_methods
+    # https://fastapi.tiangolo.com/tutorial/encoder/#using-the-jsonable_encoder
     new_data_set = jsonable_encoder(data_set)
     new_data_set = new_data_set["data_input"]
     new_data_set.sort()
