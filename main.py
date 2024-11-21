@@ -9,13 +9,13 @@ from rich.traceback import install
 install()  # Automatically improves traceback
 
 
-# define the data model for the 
+# defines the data model for the 
 # request body in the POST method
 class DataSet(BaseModel):
     data_input: List[float]
 
 
-# initialize FastAPI app
+# initializes FastAPI app
 app = FastAPI()
 
 origins = ["*"]
@@ -85,7 +85,7 @@ def calculate_stats(data_set: DataSet):
         return solutions_dict
     
     except Exception as e:
-        print("[bold red]An error has occurred:[/bold red]")
+        print("[bold red]An error has occurred:[/bold red]", e)
 
         # Catch-all error
         return jsonable_encoder(default_dict)
