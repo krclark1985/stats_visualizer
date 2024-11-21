@@ -108,8 +108,6 @@ def outliers(data_set):
     for value in data_set:
         if value < small_outlier_max or value > large_outlier_min:
             outliers.append(value)
-    if len(outliers) == 0:
-        outliers.append(None)
     return outliers
 
 '''
