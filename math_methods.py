@@ -3,8 +3,8 @@
 # for a given data set
 
 # TODO: how to validate a given input data set;
-# also, how will values be separated, by a space,
-# with a comma, or both/either?
+# values will be separated by a comma, and we'll
+# filter out non-numerical characters if present
 
 # TODO: figure out how to take as input large
 # data sets from a file
