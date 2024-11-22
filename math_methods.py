@@ -38,7 +38,7 @@ def median(data_set):
 def mode(data_set):
     """
     :type data_set: list of ints or floats
-    :rtype: int, float or None
+    :rtype: list of floats or None
     """
     multiples_tracker = [1] * len(data_set)
     highest_frequency = 1
