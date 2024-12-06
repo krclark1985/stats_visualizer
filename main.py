@@ -28,7 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print("[bold green]we're live![/bold green]")
+print("[bold green]We're live![/bold green]")
 
 # takes data set as input (as a list of float values),
 # calls math methods sequentially to calculate various
