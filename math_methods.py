@@ -102,6 +102,7 @@ def five_num_summary_dict(data_set):
 
 # returns outliers (if any) in the data set; outliers
 # identified if < q1 - (1.5 * iqr) or > q3 + (1.5 * iqr)
+# TODO: if empty, return None instead of empty list? Ask Joe
 def outliers(data_set):
     """
     :type data_set: list of ints or floats
@@ -119,12 +120,10 @@ def outliers(data_set):
             outliers.append(value)
     return outliers
 
+
+
 # mult_values_data_set = [0.2, 0.2, 0.22, 0.22, 0.22, 3, 3, 3]
-# print(mean(mult_values_data_set))
-a = 0.2
-print("isnumeric()=", str(a).lstrip(".").isnumeric())
-print("isdigit()=", str(a).lstrip(".").isdigit())
-print("isdecimal()=", str(a).lstrip(".").isdecimal())
+# print(outliers(mult_values_data_set))
 '''
 # test_set = [5, 7, 10, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25]
 test_set = [25.5, 25.5, 26.5, 28.5, 29, 30.5, 31.5, 31.5, 32, 32.5]
