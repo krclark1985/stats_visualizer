@@ -15,11 +15,15 @@ def mean(data_set):
     :type data_set: list of ints or floats
     :rtype: float
     """
+    # TODO: move these to the initial check of input data in main.py
+    '''
     if len(data_set) == 0:
         return "data set contains no values; please input numeric values"
     for data in data_set:
-        if str(data).lstrip("-").isdigit() == False:
+        # replace would probably be better than lstrip() here; give it a shot!
+        if str(data).lstrip("-", ".").isdigit() == False:
             return "data set contains non-numeric values; please input numeric values only"
+    '''
     data_sum = sum(data_set)
     n = len(data_set)
     return (data_sum / n)
@@ -115,8 +119,12 @@ def outliers(data_set):
             outliers.append(value)
     return outliers
 
-test_set = [-1, -2, -3]
-print(mean(test_set))
+# mult_values_data_set = [0.2, 0.2, 0.22, 0.22, 0.22, 3, 3, 3]
+# print(mean(mult_values_data_set))
+a = 0.2
+print("isnumeric()=", str(a).lstrip(".").isnumeric())
+print("isdigit()=", str(a).lstrip(".").isdigit())
+print("isdecimal()=", str(a).lstrip(".").isdecimal())
 '''
 # test_set = [5, 7, 10, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25]
 test_set = [25.5, 25.5, 26.5, 28.5, 29, 30.5, 31.5, 31.5, 32, 32.5]
