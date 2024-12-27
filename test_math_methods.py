@@ -1,10 +1,12 @@
 import math_methods, pytest
-from decimal import Decimal
 
 # would be violating DRY principle to repeatedly check for
 # empty data set or non-numeric data set; this check should
 # be done in main.py (and then tested there, too!)
 
+# these data sets represent various iterations of numerical
+# data sets that might be received as input
+zeroes_data_set = [0, 0]
 odd_length_data_set = [1, 2, 3]
 even_length_data_set = [1, 2, 3, 4]
 negative_data_set = [-3, -2, -1]
@@ -15,7 +17,8 @@ outliers_data_set = [5, 98, 101, 101, 101, 102, 103, 103, 396]
 # empty_data_set = []
 
 @pytest.mark.parametrize("input_data_set, expected_mean", 
-                         [(odd_length_data_set, 2),
+                         [(zeroes_data_set, 0),
+                          (odd_length_data_set, 2),
                           (even_length_data_set, 2.5),
                           (negative_data_set, -2),
                           (larger_data_set, 1.8),
@@ -23,13 +26,13 @@ outliers_data_set = [5, 98, 101, 101, 101, 102, 103, 103, 396]
                           (outliers_data_set, 1110 / 9)])
                           # (non_numeric_data_set, "data set contains non-numeric values; please input numeric values only"),
                           # (empty_data_set, "data set contains no values; please input numeric values")])
-
 def test_mean(input_data_set, expected_mean):
     assert math_methods.mean(input_data_set) == expected_mean
 
 
 @pytest.mark.parametrize("input_data_set, expected_median", 
-                         [(odd_length_data_set, 2),
+                         [(zeroes_data_set, 0),
+                          (odd_length_data_set, 2),
                           (even_length_data_set, 2.5),
                           (negative_data_set, -2),
                           (larger_data_set, 1),
@@ -40,7 +43,8 @@ def test_median(input_data_set, expected_median):
 
 
 @pytest.mark.parametrize("input_data_set, expected_mode", 
-                         [(odd_length_data_set, None),
+                         [(zeroes_data_set, [0]),
+                          (odd_length_data_set, None),
                           (even_length_data_set, None),
                           (negative_data_set, None),
                           (larger_data_set, [-8, 1, 8]),
@@ -51,7 +55,8 @@ def test_mode(input_data_set, expected_mode):
 
 
 @pytest.mark.parametrize("input_data_set, expected_five_num_summary", 
-                         [(odd_length_data_set, {'min': 1, 'q1': 1, 'median': 2, 'q3': 3, 'max': 3}),
+                         [(zeroes_data_set, {'min': 0, 'q1': 0, 'median': 0, 'q3': 0, 'max': 0}),
+                          (odd_length_data_set, {'min': 1, 'q1': 1, 'median': 2, 'q3': 3, 'max': 3}),
                           (even_length_data_set, {'min': 1, 'q1': 1.5, 'median': 2.5, 'q3': 3.5, 'max': 4}),
                           (negative_data_set, {'min': -3, 'q1': -3, 'median': -2, 'q3': -1, 'max': -1}),
                           (larger_data_set, {'min': -8, 'q1': -2, 'median': 1, 'q3': 8, 'max': 10}),
@@ -62,7 +67,8 @@ def test_five_num_summary(input_data_set, expected_five_num_summary):
 
 
 @pytest.mark.parametrize("input_data_set, expected_outliers", 
-                         [(odd_length_data_set, []),
+                         [(zeroes_data_set, []),
+                          (odd_length_data_set, []),
                           (even_length_data_set, []),
                           (negative_data_set, []),
                           (larger_data_set, []),
