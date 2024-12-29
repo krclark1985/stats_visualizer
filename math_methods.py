@@ -15,15 +15,6 @@ def mean(data_set):
     :type data_set: list of ints or floats
     :rtype: float
     """
-    # TODO: move these to the initial check of input data in main.py
-    '''
-    if len(data_set) == 0:
-        return "data set contains no values; please input numeric values"
-    for data in data_set:
-        # replace would probably be better than lstrip() here; give it a shot!
-        if str(data).lstrip("-", ".").isdigit() == False:
-            return "data set contains non-numeric values; please input numeric values only"
-    '''
     data_sum = sum(data_set)
     n = len(data_set)
     return (data_sum / n)

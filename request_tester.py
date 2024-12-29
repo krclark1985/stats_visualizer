@@ -1,3 +1,8 @@
+import main
+
+test_set = {"data_input": [1, 2, 3, 'y', 5]}
+print(main.calculate_stats(test_set))
+
 '''
 import requests
 
@@ -7,7 +12,7 @@ data = {"data_input": [1, 2, 3, 4, 5]}
 response = requests.post(url, json=data)
 
 print(response.json())
-'''
+
 
 def non_numeric_check(input_data_set):
     for data in input_data_set:
@@ -28,3 +33,4 @@ non_numeric_check(letter_test)
 non_numeric_check(one_negative_test)
 non_numeric_check(decimal_test)
 non_numeric_check(fraction_test)
+'''
