@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Any
 from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
@@ -9,10 +9,10 @@ from rich.traceback import install
 install()  # Automatically improves traceback
 
 
-# defines the data model for the 
-# request body in the POST method
+# defines the data model for the request body in the POST method;
+# accepts any data type which is later validated with valid_input_check() method
 class DataSet(BaseModel):
-    data_input: List[float]
+    data_input: List[Any]
 
 
 # initializes FastAPI app
@@ -62,7 +62,7 @@ def calculate_stats(data_set: DataSet):
             'mode': [],
             'outliers': []
         }
-        
+
         # encodes DataSet object data_set into JSON encodable object,
         # then extracts data set input list from this object; then
         # sorts new_data_set for use in subsequent math_methods
@@ -102,13 +102,12 @@ def valid_input_check(input_data_set):
         print("[bold red]Data set must contain more than one value[/bold red]")
         return False
     if non_numeric_check(input_data_set) == False:
-        print ("data set contains non-numeric values; please input numeric values only")
+        print ("[bold red]Data set contains non-numeric values; please input numeric values only[/bold red]")
         return False
     return True
 
 def empty_data_check(input_data_set):
     if len(input_data_set) < 2:
-        print("[bold red]Data set must contain more than one value[/bold red]")
         return False
     else:
         True
@@ -116,7 +115,6 @@ def empty_data_check(input_data_set):
 def non_numeric_check(input_data_set):
     for data in input_data_set:
         if not isinstance(data, (int, float, complex)):
-            print ("data set contains non-numeric values; please input numeric values only")
             return False
     return True
 
