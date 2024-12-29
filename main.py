@@ -69,25 +69,24 @@ def calculate_stats(data_set: DataSet):
         new_data_set = jsonable_encoder(data_set)
         new_data_set = new_data_set["data_input"]
 
-        if len(new_data_set) < 2:
-            print("[bold red]Data set must contain more than one value[/bold red]")
+        if valid_input_check(new_data_set) == False:
             return jsonable_encoder(default_dict)
-        else:
-            new_data_set.sort()
 
-            solutions_dict['min'] = new_data_set[0]
-            solutions_dict['max'] = new_data_set[-1]
-            solutions_dict['range'] = new_data_set[-1] - new_data_set[0]
-            solutions_dict['mean'] = math_methods.mean(new_data_set)
-            solutions_dict['mode'] = math_methods.mode(new_data_set)
-            five_number_summary_dict = math_methods.five_num_summary_dict(new_data_set)
-            solutions_dict['q1'] = five_number_summary_dict['q1']
-            solutions_dict['median'] = five_number_summary_dict['median']
-            solutions_dict['q3'] = five_number_summary_dict['q3']
-            solutions_dict['iqr'] = five_number_summary_dict['q3'] - five_number_summary_dict['q1']
-            solutions_dict['outliers'] = math_methods.outliers(new_data_set)
+        new_data_set.sort()
 
-            return solutions_dict
+        solutions_dict['min'] = new_data_set[0]
+        solutions_dict['max'] = new_data_set[-1]
+        solutions_dict['range'] = new_data_set[-1] - new_data_set[0]
+        solutions_dict['mean'] = math_methods.mean(new_data_set)
+        solutions_dict['mode'] = math_methods.mode(new_data_set)
+        five_number_summary_dict = math_methods.five_num_summary_dict(new_data_set)
+        solutions_dict['q1'] = five_number_summary_dict['q1']
+        solutions_dict['median'] = five_number_summary_dict['median']
+        solutions_dict['q3'] = five_number_summary_dict['q3']
+        solutions_dict['iqr'] = five_number_summary_dict['q3'] - five_number_summary_dict['q1']
+        solutions_dict['outliers'] = math_methods.outliers(new_data_set)
+
+        return solutions_dict    
     
     except Exception as e:
         print("[bold red]An error has occurred:[/bold red]", e)
@@ -95,7 +94,31 @@ def calculate_stats(data_set: DataSet):
         # Catch-all error
         return jsonable_encoder(default_dict)
 
+# checks to ensure that input data set contains at least 2 values,
+# and that it does not contain any non-numeric values; returns False
+# if data set is invalid, and True if valid
+def valid_input_check(input_data_set):
+    if empty_data_check(input_data_set) == False:
+        print("[bold red]Data set must contain more than one value[/bold red]")
+        return False
+    if non_numeric_check(input_data_set) == False:
+        print ("data set contains non-numeric values; please input numeric values only")
+        return False
+    return True
 
+def empty_data_check(input_data_set):
+    if len(input_data_set) < 2:
+        print("[bold red]Data set must contain more than one value[/bold red]")
+        return False
+    else:
+        True
+
+def non_numeric_check(input_data_set):
+    for data in input_data_set:
+        if not isinstance(data, (int, float, complex)):
+            print ("data set contains non-numeric values; please input numeric values only")
+            return False
+    return True
 
 '''
 @app.get("/")
