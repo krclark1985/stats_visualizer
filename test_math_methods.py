@@ -36,9 +36,9 @@ def test_median(input_data_set, expected_median):
 
 @pytest.mark.parametrize("input_data_set, expected_mode", 
                          [(zeroes_data_set, [0]),
-                          (odd_length_data_set, None),
-                          (even_length_data_set, None),
-                          (negative_data_set, None),
+                          (odd_length_data_set, []),
+                          (even_length_data_set, []),
+                          (negative_data_set, []),
                           (larger_data_set, [-8, 1, 8]),
                           (mult_values_data_set, [0.22, 3]),
                           (outliers_data_set, [101])])

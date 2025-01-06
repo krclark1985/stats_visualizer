@@ -37,13 +37,13 @@ zeroes_solution_dict = {'min': 0.0, 'q1': 0.0, 'median': 0.0, 'q3': 0.0, 'max': 
                 'range': 0.0, 'iqr': 0.0, 'mean': 0.0, 'mode': [0], 'outliers': []}
 odd_data_set_dict = {"data_input": [1, 2, 3]}
 odd_solution_dict = {'min': 1, 'q1': 1, 'median': 2, 'q3': 3, 'max': 3, 
-                'range': 2, 'iqr': 2, 'mean': 2, 'mode': None, 'outliers': []}
+                'range': 2, 'iqr': 2, 'mean': 2, 'mode': [], 'outliers': []}
 even_data_set_dict = {"data_input": [1, 2, 3, 4]}
 even_solution_dict = {'min': 1, 'q1': 1.5, 'median': 2.5, 'q3': 3.5, 'max': 4, 
-                'range': 3, 'iqr': 2, 'mean': 2.5, 'mode': None, 'outliers': []}
+                'range': 3, 'iqr': 2, 'mean': 2.5, 'mode': [], 'outliers': []}
 negative_data_set_dict = {"data_input": [-3, -2, -1]}
 negative_solution_dict = {'min': -3, 'q1': -3, 'median': -2, 'q3': -1, 'max': -1, 
-                'range': 2, 'iqr': 2, 'mean': -2, 'mode': None, 'outliers': []}
+                'range': 2, 'iqr': 2, 'mean': -2, 'mode': [], 'outliers': []}
 larger_data_set_dict = {"data_input": [-8, -8, -2, -1, 1, 1, 8, 8, 9, 10]}
 larger_data_solution_dict = {'min': -8, 'q1': -2, 'median': 1, 'q3': 8, 'max': 10, 
                 'range': 18, 'iqr': 10, 'mean': 1.8, 'mode': [-8, 1, 8], 'outliers': []}
