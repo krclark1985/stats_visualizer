@@ -51,7 +51,7 @@ def mode(data_set):
             multiples_tracker[i] = count_current_idx
 
     if highest_frequency == 1:
-        return None
+        return []
     else:
         for i in range(len(multiples_tracker)):
             if multiples_tracker[i] == highest_frequency and solution_list.count(data_set[i]) == 0:
