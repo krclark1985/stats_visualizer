@@ -2,10 +2,6 @@
 # to calculate classic statistical measures
 # for a given data set
 
-# TODO: how to validate a given input data set;
-# values will be separated by a comma, and we'll
-# filter out non-numerical characters if present
-
 # TODO: figure out how to take as input large
 # data sets from a file
 
@@ -19,8 +15,7 @@ def mean(data_set):
     n = len(data_set)
     return (data_sum / n)
 
-# returns the median of a given data set;
-# consider rounding this and the mean's float?
+# returns the median of a given data set
 def median(data_set):
     """
     :type data_set: list of ints or floats
@@ -34,7 +29,7 @@ def median(data_set):
         return (data_set[left_center] + data_set[right_center]) / 2
     
 # returns the mode, if any, of a given data set;
-# if there is no mode, returns None
+# if there is no mode, returns []
 def mode(data_set):
     """
     :type data_set: list of ints or floats
@@ -93,7 +88,6 @@ def five_num_summary_dict(data_set):
 
 # returns outliers (if any) in the data set; outliers
 # identified if < q1 - (1.5 * iqr) or > q3 + (1.5 * iqr)
-# TODO: if empty, return None instead of empty list? Ask Joe
 def outliers(data_set):
     """
     :type data_set: list of ints or floats
